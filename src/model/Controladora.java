@@ -56,4 +56,36 @@ public class Controladora {
         } while (!tableroTresEnRaya[i][j].equals(" "));
         tableroTresEnRaya[i][j] = "X";
     }
+
+    public boolean jugadaDePersona(int fila, int columna) {
+        
+        if (fila >= 0 && fila < 3 && columna >= 0 && columna < 3 && tableroTresEnRaya[fila][columna].equals(" ")) {
+            tableroTresEnRaya[fila][columna] = "O"; 
+            return true; 
+        } else {
+            return false; 
+        }
+    }
+    
+
+    public String verificarGanador(){
+
+        for (int i = 0; i < 3; i++) { 
+            if (tableroTresEnRaya[i][0].equals(tableroTresEnRaya[i][1]) && tableroTresEnRaya[i][1].equals(tableroTresEnRaya[i][2]) && !tableroTresEnRaya[i][0].equals(" ")) {
+                return tableroTresEnRaya[i][0];
+            }
+            
+            if (tableroTresEnRaya[0][i].equals(tableroTresEnRaya[1][i]) && tableroTresEnRaya[1][i].equals(tableroTresEnRaya[2][i]) && !tableroTresEnRaya[0][i].equals(" ")) {
+                return tableroTresEnRaya[0][i];
+            }
+        }
+        
+        if (tableroTresEnRaya[0][0].equals(tableroTresEnRaya[1][1]) && tableroTresEnRaya[1][1].equals(tableroTresEnRaya[2][2]) && !tableroTresEnRaya[0][0].equals(" ")) {
+            return tableroTresEnRaya[0][0];
+        }
+        if (tableroTresEnRaya[0][2].equals(tableroTresEnRaya[1][1]) && tableroTresEnRaya[1][1].equals(tableroTresEnRaya[2][0]) && !tableroTresEnRaya[0][2].equals(" ")) {
+            return tableroTresEnRaya[0][2];
+        }
+        return null;  
+    }
 }
